@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ControlMenu : MonoBehaviour
 {
     public static ControlMenu instance;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject actionPanel;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text totalScoreText;
     private int sceneNumber = 0;
+    private int score = -1;
+    
 
     private void OnEnable()
     {
@@ -26,6 +31,7 @@ public class ControlMenu : MonoBehaviour
         }
 
         PlayerControl.instance.rigthMove = !PlayerControl.instance.rigthMove;
+        AddScore();
     }
 
     public void GameOver()
@@ -37,5 +43,12 @@ public class ControlMenu : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(sceneNumber);
+    }
+
+    void AddScore()
+    {
+        score++;
+        scoreText.text = score.ToString();
+        totalScoreText.text = scoreText.text;
     }
 }
