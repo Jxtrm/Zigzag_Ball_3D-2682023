@@ -52,6 +52,16 @@ public class ControlMenu : MonoBehaviour
         SceneManager.LoadScene(sceneNumber);
     }
 
+    public void Exit()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+
+    }
+
     public void AddScore(int points)
     {
         score += points;
