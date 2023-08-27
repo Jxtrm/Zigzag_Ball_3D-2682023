@@ -27,15 +27,20 @@ public class PlatformGenerator : MonoBehaviour
     {
         for(int i = 0; i<platformsNumber; i++)
         {
-            direction = Random.Range(0, 2);
-            if (direction == 1)
-            {
-                currentPlatform = Instantiate(originalPlatform, currentPlatform.position + Vector3.right * 2, Quaternion.identity).transform;
-            }
-            else
-            {
-                currentPlatform = Instantiate(originalPlatform, currentPlatform.position + Vector3.forward * 2, Quaternion.identity).transform;
-            }
+            NextPlatform();
+        }
+    }
+
+    public void NextPlatform()
+    {
+        direction = Random.Range(0, 2);
+        if (direction == 1)
+        {
+            currentPlatform = Instantiate(originalPlatform, currentPlatform.position + Vector3.right * 2, Quaternion.identity).transform;
+        }
+        else
+        {
+            currentPlatform = Instantiate(originalPlatform, currentPlatform.position + Vector3.forward * 2, Quaternion.identity).transform;
         }
     }
 }

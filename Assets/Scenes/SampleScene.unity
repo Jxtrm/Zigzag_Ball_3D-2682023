@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPlatform: {fileID: 3615758461722900454, guid: 1a13e146cddc48745ab805098b7d260b, type: 3}
   currentPlatform: {fileID: 1515323704}
-  platformsNumber: 100
+  platformsNumber: 4
 --- !u!4 &197908004
 Transform:
   m_ObjectHideFlags: 0
