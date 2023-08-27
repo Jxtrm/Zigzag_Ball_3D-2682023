@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DeathZone
+  - Diamond
   layers:
   - Default
   - TransparentFX

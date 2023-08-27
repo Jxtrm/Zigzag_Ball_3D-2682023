@@ -15,6 +15,7 @@ public class ControlMenu : MonoBehaviour
     private float maxSpeed = 8;
     private int sceneNumber = 0;
     private int score = -1;
+    private int clickValue = 1;
     
 
     private void OnEnable()
@@ -33,7 +34,7 @@ public class ControlMenu : MonoBehaviour
         }
 
         PlayerControl.instance.rigthMove = !PlayerControl.instance.rigthMove;
-        AddScore();
+        AddScore(clickValue);
         if (PlayerControl.instance.playerSpeed < maxSpeed)
         {
             SpeedIncrease();
@@ -51,9 +52,9 @@ public class ControlMenu : MonoBehaviour
         SceneManager.LoadScene(sceneNumber);
     }
 
-    void AddScore()
+    public void AddScore(int points)
     {
-        score++;
+        score += points;
         scoreText.text = score.ToString();
         totalScoreText.text = scoreText.text;
     }

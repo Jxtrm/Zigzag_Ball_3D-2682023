@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour
     public bool startGame;
     private Rigidbody rbPlayer;
     private bool alive = true;
+    private int diamondValue = 3;
+    [SerializeField] private GameObject particle;
 
     private void OnEnable()
     {
@@ -53,6 +55,14 @@ public class PlayerControl : MonoBehaviour
             alive = false;
             rbPlayer.velocity = Physics.gravity;
             ControlMenu.instance.GameOver();
+        }
+
+        if (other.tag == "Diamond")
+        {
+            GameObject part = Instantiate(particle, other.gameObject.transform.position, Quaternion.LookRotation(new Vector3(0, 1, 0)));
+            Destroy(other.gameObject);
+            Destroy(part, 1.0f);
+            ControlMenu.instance.AddScore(diamondValue);
         }
     }
 }

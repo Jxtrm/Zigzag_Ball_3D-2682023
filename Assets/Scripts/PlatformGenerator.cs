@@ -8,6 +8,8 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private GameObject originalPlatform;
     [SerializeField] private Transform currentPlatform;
     [SerializeField] private int platformsNumber;
+    [SerializeField] private GameObject diamond;
+    private int randomDiamond;
     private int direction;
     
     private void OnEnable()
@@ -41,6 +43,13 @@ public class PlatformGenerator : MonoBehaviour
         else
         {
             currentPlatform = Instantiate(originalPlatform, currentPlatform.position + Vector3.forward * 2, Quaternion.identity).transform;
+        }
+
+        randomDiamond = Random.Range(0, 5);
+
+        if (randomDiamond < 1)
+        {
+            Instantiate(diamond, currentPlatform.position + (Vector3.up / 2), diamond.transform.rotation);
         }
     }
 }
