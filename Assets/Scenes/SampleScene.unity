@@ -333,6 +333,7 @@ MonoBehaviour:
   actionPanel: {fileID: 1143841053}
   scoreText: {fileID: 1916887274}
   totalScoreText: {fileID: 1217213196}
+  speedIncrease: 0.016
 --- !u!114 &439555818
 MonoBehaviour:
   m_ObjectHideFlags: 0

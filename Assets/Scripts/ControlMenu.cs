@@ -11,6 +11,8 @@ public class ControlMenu : MonoBehaviour
     [SerializeField] private GameObject actionPanel;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text totalScoreText;
+    [SerializeField] private float speedIncrease;
+    private float maxSpeed = 8;
     private int sceneNumber = 0;
     private int score = -1;
     
@@ -32,6 +34,10 @@ public class ControlMenu : MonoBehaviour
 
         PlayerControl.instance.rigthMove = !PlayerControl.instance.rigthMove;
         AddScore();
+        if (PlayerControl.instance.playerSpeed < maxSpeed)
+        {
+            SpeedIncrease();
+        }
     }
 
     public void GameOver()
@@ -50,5 +56,10 @@ public class ControlMenu : MonoBehaviour
         score++;
         scoreText.text = score.ToString();
         totalScoreText.text = scoreText.text;
+    }
+
+    void SpeedIncrease()
+    {
+        PlayerControl.instance.playerSpeed += speedIncrease;
     }
 }
