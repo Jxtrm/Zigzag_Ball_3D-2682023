@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     public bool rigthMove;
     public bool startGame;
     private Rigidbody rbPlayer;
+    private bool alive = true;
 
     private void OnEnable()
     {
@@ -27,7 +28,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startGame)
+        if (startGame && alive)
         {
             PlayerMovement();
         }
@@ -42,6 +43,16 @@ public class PlayerControl : MonoBehaviour
         else
         {
             rbPlayer.velocity = (Vector3.forward * playerSpeed) + Physics.gravity;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "DeathZone")
+        {
+            alive = false;
+            rbPlayer.velocity = Physics.gravity;
+            ControlMenu.instance.GameOver();
         }
     }
 }
